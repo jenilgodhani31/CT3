@@ -1,0 +1,444 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+.react-calendar {
+  width: 270px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #a0a096;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+}
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 50px;
+  margin-bottom: 1em;
+}
+
+.react-calendar__navigation button {
+  margin-top: 5px;
+  min-width: 45px;
+  background: none;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__tile--now {
+  background: #ffff76;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+
+.react-calendar__tile--hasActive {
+  background: #76baff;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #a9d4ff;
+}
+
+.react-calendar__tile--active {
+  background: #006edc;
+  border-radius: 5px;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #1087ff;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.loader {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #757575;
+  left: -100px;
+  box-sizing: border-box;
+  animation: shadowRolling 2s linear infinite;
+}
+
+@keyframes shadowRolling {
+  0% {
+    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+  12% {
+    box-shadow: 100px 0 grey, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+  25% {
+    box-shadow: 110px 0 grey, 100px 0 grey, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0);
+  }
+  36% {
+    box-shadow: 120px 0 grey, 110px 0 grey, 100px 0 grey,
+      0px 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 130px 0 grey, 120px 0 grey, 110px 0 grey, 100px 0 grey;
+  }
+  62% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 grey, 120px 0 grey,
+      110px 0 grey;
+  }
+  75% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      130px 0 grey, 120px 0 grey;
+  }
+  87% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 130px 0 grey;
+  }
+  100% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.scroll-container {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.scroll-animated-element {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-animated-element.animate {
+  opacity: 1;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#chart1 {
+  width: 300px;
+  margin: 0 auto;
+}
+/* .scroll-animated-element {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-animated-element.animate {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+} */
+@media screen and (max-width: 769px) {
+ #dropDwon {
+     position: relative;
+ }
+ #input{
+  width: 75vw;
+ }
+
+
+#Input{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+#inputCommit{
+  width: 20vw;
+}
+
+#for{
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+#for1{
+  margin-left:10%;
+  width: 50vw;
+}
+#inputFor{
+  width: 30vw;
+}
+#forgot{
+  margin-left: 15%;
+  margin-right: 10%;
+  width: 70vw;
+}
+.head{
+ 
+  background-size: cover;
+}
+}
+
+@media screen and (max-width: 1024px) {
+
+  #photo{
+    display: none;
+  }
+ #size{
+  margin-left: 20%;
+ }
+ 
+#reg{
+  margin-left: 30%;
+}
+#for{
+  margin-left: 30%;
+  margin-top: 10%;
+}
+
+#forgot{
+  margin-left: 25%;
+  margin-right: 10%;
+  width: 60vw;
+}
+#InputWidth{
+  width: 30vw;
+}
+
+.head{
+ 
+  background-size: cover;
+}
+ }
+ 
+@media screen and (max-width: 450px) {
+ 
+  #img{
+    margin-top: 5px;
+    margin-left: 40%;
+  }
+ #Fname{
+  margin-top: 5px;
+  margin-left: 15%;
+ }
+ #Lname{
+  margin-top: 5px;
+  margin-left: 15%;
+ }
+ #Input{
+  margin-left: 10px;
+  /* margin-right: 10px; */
+ }
+ #inputCommit{
+  width: 40vw;
+}
+
+#text{
+  font-size: 40px;
+}
+#Text{
+  font-size: 20px;
+}
+#size{
+  margin-left: 5%;
+ }
+ *#btn{
+  font-size: small;
+ }
+ #reg{
+  margin-left: 5%;
+  margin-top: 30%;
+}
+#for{
+  margin-left: 5%;
+  margin-top: 40%;
+}
+
+#forgot{
+  margin-left: 1%;
+  width: 100%;
+  margin-top: 25%;
+}
+img{
+  margin-left: 5px;  
+}
+#cel{
+  width: 100%;
+}
+#status{
+  width: 100%;
+}
+#Activity{
+  width: 100%;
+}
+
+.back{
+  background: none;  
+}
+.box{
+  margin-top: 200px;
+}
+#input1{
+  width: 300px;
+}#input2{
+  width: 300px;
+}
+#input3{
+  width: 300px;
+}
+
+
+.head{
+  margin-top: 30px;
+  background-size: cover;
+}
+#size{
+  margin-top: 200px;
+  margin-left: 10px;
+  
+}
+ }
+
+ #Cel{
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-right: 5px;         
+ }
+
+ input:focus{
+  outline: none;
+
+ }
+
+ @media screen and (max-width: 600px) {
+  .head{
+    margin-top: 30px;
+    background-size: cover;
+  }
+  #size{
+    margin-top: 200px;
+    margin-left: 10px;
+
+  } 
+ }
